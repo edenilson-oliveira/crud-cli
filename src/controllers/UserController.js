@@ -43,7 +43,7 @@ const updateUser = async (req,res) => {
     }).status(200)
   }
   catch{
-    res.json({ message: 'Erro 404'}).status(404)
+    res.json({ message: 'Error 404'}).status(404)
   }
 }
 
