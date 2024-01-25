@@ -23,10 +23,6 @@ const UserModel = connection.define("user", {
   },
   lastName: {
     type: Sequelize.STRING,
-  },
-  createdAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW
   }
   
 })
