@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import router from './routes/router.js'
 import connection from './database/index.js'
 
-import 
+import commander from './cli/index.js'
 
 dotenv.config()
 
