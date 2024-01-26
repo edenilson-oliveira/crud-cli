@@ -10,12 +10,27 @@ const findAll = async (req,res) => {
   }
 }
 
+const findById = async (req,res) => {
+  try{
+    const { id } = req.params
+    const user = await UserModel.findAll({
+      where: {
+        id: id
+      }
+    })
+    res.json(user).status(200)
+  }
+  catch{
+    res.json({message: 'Erro 404'}).status(404)
+  }
+}
+
 const createUser = async (req,res) => {
   try{
     const user = await UserModel.create(req.body).status(200).json(user)
   }
   catch(err){
-    res.json({message: 'Error 404'}).status(405)
+    res.json({message: 'Error 404'}).status(404)
   }
   
 }
@@ -27,8 +42,9 @@ const deleteUser = async (req,res) => {
       where: {
         id: id
       }
-    }).status(200)
-  } catch{
+    }).json(user).status(200)
+  }
+  catch{
     res.json({ message: 'Error 404'}).status(404)
   }
 }
@@ -47,4 +63,4 @@ const updateUser = async (req,res) => {
   }
 }
 
-export default { findAll,createUser,deleteUser,updateUser }
+export default { findAll,findById,createUser,deleteUser,updateUser }

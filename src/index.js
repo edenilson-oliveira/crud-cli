@@ -1,13 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv'
+import 'dotenv/config'
 
 import router from './routes/router.js'
 import connection from './database/index.js'
-
-import commander from './cli/index.js'
-
-dotenv.config()
-
 
 const app = express()
 
