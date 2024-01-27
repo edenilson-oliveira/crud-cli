@@ -3,7 +3,7 @@ import axios from 'axios'
 import request from './request.js'
 
 const getData = async (id) => {
-  const  user = await axios.get(`http://localhost:3000/13`).then(result => result.data)
+  const  user = await axios.get(`http://localhost:3000/${id}`).then(result => result.data)
   
   await inquirer
   .prompt([
@@ -35,5 +35,5 @@ const getData = async (id) => {
       request.edit(answer,id)
     })
 }
-    
+ 
 export default getData

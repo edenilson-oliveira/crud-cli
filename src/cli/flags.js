@@ -28,7 +28,7 @@ switch(Object.keys(commander.opts())[0]){
     request.deleteUser(commander.opts().delete)
   break
   default:
-    console.log('não tem')
+    console.log('Error')
     break
 }
 
