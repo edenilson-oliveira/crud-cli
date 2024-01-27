@@ -1,4 +1,6 @@
 import { Command } from 'commander';
+import request from './request.js'
+import getData from './prompt.js'
 
 const commander = new Command()
 
@@ -6,7 +8,7 @@ commander
   .name('crud-cli')
   .version('1.0.0','-v','--version')
   
-  .option('-v, --view', 'see users')
+  .option('-u, --view', 'see users')
   .option('-c, --create', 'create user')
   .option('-d, --delete <id>', 'remove user')
   .option('-e, --edit <id>', 'edit user')
@@ -14,16 +16,16 @@ commander
   
 switch(Object.keys(commander.opts())[0]){
   case 'view':
-    console.log('view')
+    request.viewUsers()
     break
   case 'create':
-    console.log('teste')
+    getData()
     break
   case 'edit':
-    console.log('teste')
+    getData(commander.opts().edit)
     break
   case 'delete':
-    console.log('teste')
+    request.deleteUser(commander.opts().delete)
   break
   default:
     console.log('não tem')
