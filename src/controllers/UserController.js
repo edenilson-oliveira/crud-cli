@@ -21,16 +21,19 @@ const findById = async (req,res) => {
     res.json(user).status(200)
   }
   catch{
-    res.json({message: 'Erro 404'}).status(404)
+    res.json({message: 'Erro 400'}).status(404)
   }
 }
 
 const createUser = async (req,res) => {
   try{
-    const user = await UserModel.create(req.body).status(200).json(user)
+    console.log(UserModel)
+    const user = await UserModel.create(req.body).status(201).json(user)
+    
   }
   catch(err){
-    res.json({message: 'Error 404'}).status(404)
+    console.log(err)
+    res.json({message: 'Error 400'}).status(400)
   }
   
 }
@@ -42,7 +45,7 @@ const deleteUser = async (req,res) => {
       where: {
         id: id
       }
-    }).json(user).status(200)
+    }).json(user).status(204)
   }
   catch{
     res.json({ message: 'Error 404'}).status(404)
@@ -59,7 +62,7 @@ const updateUser = async (req,res) => {
     }).status(200)
   }
   catch{
-    res.json({ message: 'Error 404'}).status(404)
+    res.json({ message: 'Error 400'}).status(400)
   }
 }
 

@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import request from './request.js'
-import getData from './prompt.js'
+import showPrompts from './prompt.js'
 
 const commander = new Command()
 
@@ -19,10 +19,10 @@ switch(Object.keys(commander.opts())[0]){
     request.viewUsers()
     break
   case 'create':
-    getData()
+    showPrompts()
     break
   case 'edit':
-    getData(commander.opts().edit)
+    showPrompts(commander.opts().edit)
     break
   case 'delete':
     request.deleteUser(commander.opts().delete)

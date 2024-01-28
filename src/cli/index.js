@@ -1,5 +1,5 @@
 //import commander from './flags.js'
-import getData from './prompt.js'
-getData()
+import showPrompts from './prompt.js'
+showPrompts()
 
 //export default commander
