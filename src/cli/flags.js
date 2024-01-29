@@ -14,6 +14,19 @@ commander
   .option('-e, --edit <id>', 'edit user')
  commander.parse()
   
+  async function IdExist(id){
+    const user = await request.viewUsersById(id)
+    if(user.length > 0){
+      return true
+    }
+    
+    else{
+      console.log('id not exists')
+      process.exit()
+    }
+  }
+  
+  
 switch(Object.keys(commander.opts())[0]){
   case 'view':
     request.viewUsers()
@@ -22,13 +35,18 @@ switch(Object.keys(commander.opts())[0]){
     showPrompts()
     break
   case 'edit':
-    showPrompts(commander.opts().edit)
+    if(IdExist(commander.opts().edit)){
+      showPrompts(commander.opts().edit)
+    }
+    
     break
   case 'delete':
-    request.deleteUser(commander.opts().delete)
-  break
+    if(IdExist(commander.opts().delete)){
+      request.deleteUser(commander.opts().delete)
+    }
+    break
   default:
-    console.log('Error')
+    console.log('Error flags not is valid')
     break
 }
 

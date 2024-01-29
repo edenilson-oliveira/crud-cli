@@ -27,12 +27,11 @@ const findById = async (req,res) => {
 
 const createUser = async (req,res) => {
   try{
-    console.log(UserModel)
-    const user = await UserModel.create(req.body).status(201).json(user)
+    const user = await UserModel.create(req.body)
+    res.status(201).json(user)
     
   }
   catch(err){
-    console.log(err)
     res.json({message: 'Error 400'}).status(400)
   }
   
@@ -45,7 +44,8 @@ const deleteUser = async (req,res) => {
       where: {
         id: id
       }
-    }).json(user).status(204)
+    })
+    res.status(204)
   }
   catch{
     res.json({ message: 'Error 404'}).status(404)
@@ -59,9 +59,11 @@ const updateUser = async (req,res) => {
       where: {
         id: id
       }
-    }).status(200)
+    })
+    res.json(user).status(200)
   }
-  catch{
+  catch(err){
+    console.log(err)
     res.json({ message: 'Error 400'}).status(400)
   }
 }

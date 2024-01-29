@@ -28,7 +28,7 @@ const edit = async (response,id) => {
 
 const deleteUser = async (id) => {
   await axios.delete(`http://localhost:3000/users/${id}`)
-    .then(() => console.log('user deleted with sucess'))
+  .then(() => console.log('user deleted with sucess'))
   .catch(err => console.log(`user not deleted ${err}`))
 }
 
