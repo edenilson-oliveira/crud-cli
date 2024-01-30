@@ -5,8 +5,8 @@ const findAll = async (req,res) => {
     const user = await UserModel.findAll({})
     res.json(user).status(200)
   }
-  catch(err){
-    res.json({message: 'Error 400', error: err}).status(400)
+  catch{
+    res.json({ message: 'Internal server error'}).status(500)
   }
 }
 
@@ -21,7 +21,7 @@ const findById = async (req,res) => {
     res.json(user).status(200)
   }
   catch{
-    res.json({message: 'Erro 400'}).status(404)
+    res.json({ message: 'Internal server error'}).status(500)
   }
 }
 
@@ -31,8 +31,8 @@ const createUser = async (req,res) => {
     res.status(201).json(user)
     
   }
-  catch(err){
-    res.json({message: 'Error 400'}).status(400)
+  catch{
+    res.json({ message: 'Internal server error'}).status(500)
   }
   
 }
@@ -50,12 +50,12 @@ const deleteUser = async (req,res) => {
       res.json({message: "sucess"}).status(200)
     }
     else{
-      throw new Error('Not found')
+      res.json({ message: 'User Not Found'}).status(404)
     }
   }
   
   catch{
-    res.json({ message: 'Error 404'}).status(404)
+    res.json({ message: 'Internal server error'}).status(500)
   }
 }
 
@@ -68,10 +68,16 @@ const updateUser = async (req,res) => {
       }
     })
     
-    res.json(user).status(200)
+    if(user){
+      const userReponse = await UserModel.findByPk(id)
+      res.json(userReponse).status(200)
+    }
+    else{
+      res.json({ message: 'User Not Found'}).status(404)
+    }
   }
   catch(err){
-    res.json({ message: 'Error 400'}).status(400)
+    res.json({ message: 'Internal server error'}).status(500)
   }
 }
 
