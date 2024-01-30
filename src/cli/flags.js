@@ -32,7 +32,7 @@ switch(Object.keys(commander.opts())[0]){
     request.viewUsers()
     break
   case 'create':
-    showPrompts()
+    showPrompts(null,'post')
     break
   case 'edit':
     if(IdExist(commander.opts().edit)){

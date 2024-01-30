@@ -45,8 +45,15 @@ const deleteUser = async (req,res) => {
         id: id
       }
     })
-    res.status(204)
+    
+    if(user){
+      res.json({message: "sucess"}).status(200)
+    }
+    else{
+      throw new Error('Not found')
+    }
   }
+  
   catch{
     res.json({ message: 'Error 404'}).status(404)
   }
@@ -60,10 +67,10 @@ const updateUser = async (req,res) => {
         id: id
       }
     })
+    
     res.json(user).status(200)
   }
   catch(err){
-    console.log(err)
     res.json({ message: 'Error 400'}).status(400)
   }
 }
