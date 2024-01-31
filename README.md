@@ -11,6 +11,11 @@ This project is a simple CRUD, usuing a cli to get,criar,edit and delete users.
 - DELETE: /users/:id
 
 # Getting started
+- Install the dependecies
+```bash
+   npm install
+```
+
 - Configure the file .env
 - Initialize the server
   
