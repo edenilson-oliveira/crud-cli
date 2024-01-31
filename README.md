@@ -5,7 +5,7 @@ This project is a simple CRUD, usuing a cli to get,criar,edit and delete users.
 ### Methods http
 
 - GET: /users
-- GET: /usere/:id
+- GET: /users/:id
 - POST: /users
 - PATCH: /users/:id
 - DELETE: /users/:id
